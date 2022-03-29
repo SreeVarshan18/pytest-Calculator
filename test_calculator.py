@@ -1,23 +1,29 @@
 import calculator
 
-def test_add2no():
-    x = 10
-    y = 20
-    res = calculator.add2no(x, y)
-    assert res == x+y
+import pytest
 
+
+@pytest.mark.parametrize("a, b, c", [(2, 3, 5), (12, 10, 22)])
+def test_add2no(a, b, c):
+    res = calculator.add2no(a, b)
+    assert res == c
+
+
+@pytest.mark.filterwarnings
 def test_sub2no():
-    x = 40
-    y = 20
-    res = calculator.sub2no(x, y)
-    assert res == x - y
+    a = 5
+    b = 2
+    res = calculator.sub2no(a, b)
+    assert res == a - b
 
-def test_nul2no():
-    x = 2
-    y = 5
-    res = calculator.mul2no(x, y)
-    assert res == x*y
 
+@pytest.mark.parametrize("a, b, c", [(3, 2, 6), (9, 4, 36)])
+def test_mul2no(a, b, c):
+    res = calculator.mul2no(a, b)
+    assert res == c
+
+
+@pytest.mark.filterwarnings
 def test_div2no():
     x = 5
     y = 2
